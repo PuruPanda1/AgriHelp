@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/agroTechFragment"
+    android:icon="@drawable/agrotech_icon"
+    android:title="AgroTech"
+    />
+
+    <item
+    android:id="@+id/marketPlaceFragment"
+    android:icon="@drawable/marketplace_icon"
+    android:title="Market Place"
+    />
+
+    <item
+    android:id="@+id/createNew"
+    android:icon="@drawable/create_icon"
+    android:title="Create"
+    />
+
+    <item
+    android:id="@+id/inventoryFragment"
+    android:icon="@drawable/inventory_icon"
+    android:title="Inventory"
+    />
+
+    <item
+    android:id="@+id/profileFragment"
+    android:icon="@drawable/profile_icon"
+    android:title="Profile"
+    />
+</menu>

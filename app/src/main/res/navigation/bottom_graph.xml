@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_graph"
+    app:startDestination="@id/agroTechFragment">
+
+    <fragment
+        android:id="@+id/agroTechFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.AgroTechFragment"
+        android:label="Agro Tech"
+        tools:layout="@layout/fragment_agro_tech" />
+    <fragment
+        android:id="@+id/marketPlaceFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.MarketPlaceFragment"
+        android:label="Market Place"
+        tools:layout="@layout/fragment_market_place" />
+    <fragment
+        android:id="@+id/inventoryFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
+        android:label="Inventory"
+        tools:layout="@layout/fragment_inventory" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
