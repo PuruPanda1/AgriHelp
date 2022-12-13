@@ -1,8 +1,11 @@
 package com.purabmodi.agrihelp.db
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "inventory_items")
 data class InventoryItem(
     @PrimaryKey(autoGenerate = true)
@@ -10,4 +13,5 @@ data class InventoryItem(
     val name: String,
     val bio: String,
     val quantity: Float,
-)
+    val date:Long
+):Parcelable

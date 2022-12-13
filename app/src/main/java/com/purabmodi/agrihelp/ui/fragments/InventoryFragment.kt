@@ -55,7 +55,7 @@ class InventoryFragment : Fragment() {
     }
 
     private fun updateItem(item: InventoryItem) {
-        vm.insertItem(item)
+//        vm.insertItem(item)
     }
 
     override fun onDestroy() {

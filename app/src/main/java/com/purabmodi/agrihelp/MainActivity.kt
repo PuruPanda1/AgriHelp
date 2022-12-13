@@ -37,10 +37,11 @@ class MainActivity : AppCompatActivity() {
             if(item.itemId == R.id.createNew){
                 val bottomSheet = CreateNewBottomSheet()
                 bottomSheet.show(supportFragmentManager,bottomSheet.tag)
+                false
             }else{
                 NavigationUI.onNavDestinationSelected(item, navController)
+                true
             }
-            true
         }
 
         binding.bottomNavigationView.setOnItemReselectedListener { item ->

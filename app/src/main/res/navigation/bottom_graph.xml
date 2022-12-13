@@ -19,7 +19,8 @@
         android:id="@+id/inventoryFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
         android:label="Inventory"
-        tools:layout="@layout/fragment_inventory" />
+        tools:layout="@layout/fragment_inventory" >
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.ProfileFragment"
