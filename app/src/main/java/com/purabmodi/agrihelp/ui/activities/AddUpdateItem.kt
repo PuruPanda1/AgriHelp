@@ -10,10 +10,14 @@ import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.databinding.ActivityAddUpdateItemBinding
 import com.purabmodi.agrihelp.db.InventoryItem
 import com.purabmodi.agrihelp.ui.viewModel.InventoryViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddUpdateItem : AppCompatActivity() {
     private lateinit var binding : ActivityAddUpdateItemBinding
     private var date = 0L
+    private var formatedDate = ""
+    val sdf = SimpleDateFormat("dd/MM/yyyy")
     private val vm by viewModels<InventoryViewModel>()
     private var mode = "add"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +25,11 @@ class AddUpdateItem : AppCompatActivity() {
         binding = ActivityAddUpdateItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+//        code to convert date to string
+        date = System.currentTimeMillis()
+        val netDate = Date(date)
+        formatedDate = sdf.format(netDate)
 
         initUI()
 
@@ -38,6 +47,10 @@ class AddUpdateItem : AppCompatActivity() {
             }
         }
         binding.apply{
+            dateTv.text = formatedDate
+            calenderPicker.setOnClickListener {
+                showDatePicker()
+            }
             submitBtn.setOnClickListener {
                 if (itemName.text.toString().isNotEmpty() && itemBio.text.toString().isNotEmpty() && itemQuantity.text.toString().isNotEmpty() && date != 0L){
                     if(mode == "add"){
@@ -54,6 +67,9 @@ class AddUpdateItem : AppCompatActivity() {
         val datePicker = DatePickerDialog(this)
         datePicker.setOnDateSetListener { view, year, month, dayOfMonth ->
             date = (year*10000 + month*100 + dayOfMonth).toLong()
+            val netDate = Date(date)
+            formatedDate = sdf.format(netDate)
+            binding.dateTv.text = formatedDate
         }
         datePicker.show()
     }
