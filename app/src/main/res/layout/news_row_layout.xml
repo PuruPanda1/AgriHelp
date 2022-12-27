@@ -2,18 +2,23 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    android:elevation="0dp"
+    android:layout_margin="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:paddingVertical="2dp"
+        android:background="@color/backgroundColor"
+        android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/newsImage"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
             android:src="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/newsTextLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +29,7 @@
             android:id="@+id/newsTextLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/newsImage"
