@@ -1,60 +1,108 @@
 package com.purabmodi.agrihelp.ui.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.purabmodi.agrihelp.R
+import com.purabmodi.agrihelp.data.models.Record
+import com.purabmodi.agrihelp.databinding.FragmentMarketPlaceBinding
+import com.purabmodi.agrihelp.ui.adapter.LatestMarketDataPagingAdapter
+import com.purabmodi.agrihelp.ui.viewModel.MarketPlaceViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MarketPlaceFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class MarketPlaceFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentMarketPlaceBinding? = null
+    private val binding get() = _binding!!
+    private val vm by viewModels<MarketPlaceViewModel>()
+    private val map = HashMap<String, String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_market_place, container, false)
+    ): View {
+        _binding = FragmentMarketPlaceBinding.inflate(layoutInflater, container, false)
+
+        initUI()
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MarketPlaceFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MarketPlaceFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setUpMenu()
+    }
+
+    private fun setUpMenu() {
+        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.toolbar_searchview_menu, menu)
+                val search = menu.findItem(R.id.menu_search)
+                val searchView = search.actionView as androidx.appcompat.widget.SearchView
+                searchView.isSubmitButtonEnabled = true
+                searchView.setOnQueryTextListener(object :
+                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        map["filters[commodity]"] = query ?: ""
+                        vm.getMarketPlaceData(map)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        return false
+                    }
+
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+
+    private fun initUI() {
+        val adapter = LatestMarketDataPagingAdapter(onClick = { item ->
+            onCLick(item)
+        })
+        binding.marketPlaceRC.layoutManager = LinearLayoutManager(requireContext())
+        binding.marketPlaceRC.adapter = adapter
+        map["filters[grade]"] = "FAQ"
+        vm.getMarketPlaceData(map)
+        vm.marketPlaceData.observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
+                adapter.submitData(it)
+            }
+        }
+        lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest {
+                binding.marketPlaceRC.isVisible = it.refresh !is LoadState.Loading
+                if (it.source.refresh is LoadState.Error) {
+                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
+        }
+    }
+
+    private fun onCLick(item: Record) {
+        Toast.makeText(requireContext(), "${item.commodity}", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

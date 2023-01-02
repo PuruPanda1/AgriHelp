@@ -4,8 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.databinding.InventoryItemRowLayoutBinding
 import com.purabmodi.agrihelp.db.InventoryItem
+import java.text.SimpleDateFormat
 
 class InventoryAdapter(
     val updateItem: (item: InventoryItem) -> Unit,
@@ -35,8 +38,21 @@ class InventoryAdapter(
         ) {
             binding.itemName.text = item.name
             binding.itemBio.text = item.bio
-            binding.itemId.text = item.id.toString()
-            binding.itemQuantity.text = item.quantity.toString()
+            binding.itemNos.text = item.quantity.toString()
+
+            val simpleDateFormat = SimpleDateFormat("dd MMM")
+            val dateString = simpleDateFormat.format(item.date)
+            binding.itemDate.text = dateString
+
+            if(item.isInput){
+                Glide.with(binding.root).load(R.drawable.ic_add_icon).into(binding.itemIcon)
+                binding.itemCategory.text = "Planted"
+            }else{
+                Glide.with(binding.root).load(R.drawable.ic_remove_icon).into(binding.itemIcon)
+                binding.itemCategory.text = "Removed"
+            }
+
+
         }
     }
 

@@ -14,6 +14,6 @@ interface InventoryDao {
     @Delete
     suspend fun deleteItem(inventoryItem: InventoryItem)
 
-    @Query("SELECT * FROM inventory_items")
+    @Query("SELECT * FROM inventory_items ORDER BY date DESC")
     fun getAllItems(): LiveData<List<InventoryItem>>
 }

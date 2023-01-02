@@ -1,9 +1,9 @@
 package com.purabmodi.agrihelp.data.repository
 
-import com.purabmodi.agrihelp.api.ApiHelper
+import com.purabmodi.agrihelp.api.newsApi.NewsApiHelper
 import javax.inject.Inject
 
-class NewsRepository @Inject constructor(private val apiHelper: ApiHelper) {
+class NewsRepository @Inject constructor(private val apiHelper: NewsApiHelper) {
     suspend fun getNews(page:Int) = apiHelper.getNews(
         "agriculture",
         page.toString(),

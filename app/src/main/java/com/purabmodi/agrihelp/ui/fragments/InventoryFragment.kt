@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.databinding.FragmentInventoryBinding
 import com.purabmodi.agrihelp.db.InventoryItem
 import com.purabmodi.agrihelp.ui.adapter.InventoryAdapter

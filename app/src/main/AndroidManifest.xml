@@ -16,6 +16,13 @@
         android:theme="@style/Theme.AgriHelp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.adminstration.LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.activities.AddUpdateItem"
             android:exported="false">
             <meta-data

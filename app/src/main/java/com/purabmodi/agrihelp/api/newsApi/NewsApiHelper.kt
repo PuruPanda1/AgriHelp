@@ -1,16 +1,16 @@
-package com.purabmodi.agrihelp.api
+package com.purabmodi.agrihelp.api.newsApi
 
 import com.purabmodi.agrihelp.data.models.NewsResponse
 import retrofit2.Response
 import retrofit2.http.Query
-import javax.inject.Inject
 
-class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {
-    override suspend fun getNews(
+interface NewsApiHelper {
+    suspend fun getNews(
         @Query("q") q: String,
         @Query("page") page: String,
         @Query("pageSize") pageSize: String,
         @Query("apiKey") apiKey: String,
         @Query("searchIn") searchIn: String
-    ): Response<NewsResponse> = apiService.getNews(q, page, pageSize, apiKey, searchIn)
+    ): Response<NewsResponse>
+
 }

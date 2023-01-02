@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215685446402",
+    "project_id": "cropdex-453f4",
+    "storage_bucket": "cropdex-453f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215685446402:android:1667cc054611cfd5eb601b",
+        "android_client_info": {
+          "package_name": "com.purabmodi.agrihelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215685446402-6b9g3nqs8pkonl3be4ia6vq6im91gl88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClx3R7KiL6SzvN9On6uJUftCTx2W4cz9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215685446402-6b9g3nqs8pkonl3be4ia6vq6im91gl88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

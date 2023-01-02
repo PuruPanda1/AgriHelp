@@ -130,10 +130,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/add_item_icon"
+                android:src="@drawable/ic_calender"
                 app:layout_constraintBottom_toBottomOf="@id/dateTv"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/dateTv" />
+                app:layout_constraintTop_toTopOf="@id/dateTv"
+                app:tint="@color/primary_green" />
 
             <Button
                 android:id="@+id/submitBtn"

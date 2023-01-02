@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.dagger.hilt.android'
@@ -40,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.2'
     def lifecycle_version = "2.2.0"
     def room_version = "2.2.3"
 
@@ -75,6 +77,9 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:4.14.2"
 //    Swipe refresh layout
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+//    firebase
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 kapt {
     correctErrorTypes true

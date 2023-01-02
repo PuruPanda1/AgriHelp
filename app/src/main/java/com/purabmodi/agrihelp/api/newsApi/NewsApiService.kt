@@ -1,11 +1,11 @@
-package com.purabmodi.agrihelp.api
+package com.purabmodi.agrihelp.api.newsApi
 
 import com.purabmodi.agrihelp.data.models.NewsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiService {
+interface NewsApiService {
 
     @GET("everything/")
     suspend fun getNews(

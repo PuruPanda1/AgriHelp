@@ -12,6 +12,7 @@ data class InventoryItem(
     val id: Int,
     val name: String,
     val bio: String,
+    val isInput: Boolean,
     val quantity: Float,
     val date:Long
 ):Parcelable

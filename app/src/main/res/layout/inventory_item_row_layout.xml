@@ -1,64 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/eachRowLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/itemId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="1"
-            android:textStyle="bold"
-            android:textSize="18sp"
+        <FrameLayout
+            android:id="@+id/floatingIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/circle_image_background"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2"
-            app:layout_constraintBottom_toBottomOf="@id/itemQuantity"
-            app:layout_constraintEnd_toStartOf="@id/itemQuantity"
-            app:layout_constraintStart_toEndOf="@id/itemId"
-            app:layout_constraintTop_toTopOf="@id/itemQuantity">
-
-            <TextView
-                android:id="@+id/itemName"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/itemIcon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:text="Bamboo" />
+                android:layout_height="match_parent"
+                android:padding="10dp" />
 
-            <TextView
-                android:id="@+id/itemBio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Bamboo is a plant which gives us sugar" />
-
-        </LinearLayout>
+        </FrameLayout>
 
         <TextView
-            android:id="@+id/itemQuantity"
+            android:id="@+id/itemDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="15 pcs"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="15 July 22"
+            app:layout_constraintStart_toEndOf="@id/floatingIcon"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itemCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="Entertainment"
+            app:layout_constraintStart_toEndOf="@id/itemDate"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:text="Pizza Dine out"
+            app:layout_constraintEnd_toStartOf="@+id/itemNos"
+            app:layout_constraintStart_toEndOf="@+id/floatingIcon"
+            app:layout_constraintTop_toBottomOf="@id/itemDate"/>
+
+        <TextView
+            android:id="@+id/itemNos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:padding="2dp"
+            android:text="100"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/itemBio"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/itemBio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Paid"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@id/itemNos"
+            app:layout_constraintStart_toStartOf="@id/itemName"
+            app:layout_constraintTop_toBottomOf="@id/itemName" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

@@ -3,18 +3,19 @@ package com.purabmodi.agrihelp.ui.activities
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.navigation.NavArgs
-import androidx.navigation.navArgs
 import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.databinding.ActivityAddUpdateItemBinding
 import com.purabmodi.agrihelp.db.InventoryItem
 import com.purabmodi.agrihelp.ui.viewModel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class AddUpdateItem : AppCompatActivity() {
-    private lateinit var binding : ActivityAddUpdateItemBinding
+    private lateinit var binding: ActivityAddUpdateItemBinding
     private var date = 0L
     private var formatedDate = ""
     val sdf = SimpleDateFormat("dd/MM/yyyy")
@@ -37,39 +38,70 @@ class AddUpdateItem : AppCompatActivity() {
 
     private fun initUI() {
 //        intent.extras
-        if(intent.hasExtra("mode")){
+        if (intent.hasExtra("mode")) {
             mode = intent.getStringExtra("mode").toString()
-            if(mode == "add"){
+            if (mode == "add") {
                 binding.submitBtn.text = "Add Item"
-            }else{
+            } else {
                 binding.submitBtn.text = "Update Item"
-                date = intent.getLongExtra("date",0L)
+                date = intent.getLongExtra("date", 0L)
             }
         }
-        binding.apply{
+        binding.apply {
             dateTv.text = formatedDate
             calenderPicker.setOnClickListener {
                 showDatePicker()
             }
             submitBtn.setOnClickListener {
-                if (itemName.text.toString().isNotEmpty() && itemBio.text.toString().isNotEmpty() && itemQuantity.text.toString().isNotEmpty() && date != 0L){
-                    if(mode == "add"){
-                        vm.insertItem(InventoryItem(0,itemName.text.toString(),itemBio.text.toString(),itemQuantity.text.toString().toFloat(),date))
-                    }else{
-                        vm.updateItem(InventoryItem(0,itemName.text.toString(),itemBio.text.toString(),itemQuantity.text.toString().toFloat(),date))
+                if (itemName.text.toString().isNotEmpty() && itemBio.text.toString()
+                        .isNotEmpty() && itemQuantity.text.toString().isNotEmpty() && date != 0L
+                ) {
+                    if (mode == "add") {
+                        vm.insertItem(
+                            InventoryItem(
+                                0,
+                                itemName.text.toString(),
+                                itemBio.text.toString(),
+                                false,
+                                itemQuantity.text.toString().toFloat(),
+                                date
+                            )
+                        )
+                    } else {
+                        vm.updateItem(
+                            InventoryItem(
+                                0,
+                                itemName.text.toString(),
+                                itemBio.text.toString(),
+                                true,
+                                itemQuantity.text.toString().toFloat(),
+                                date
+                            )
+                        )
                     }
+                    if(mode=="add"){
+                        Toast.makeText(applicationContext, "Added", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(applicationContext, "Edited" +
+                                "", Toast.LENGTH_SHORT).show()
+                    }
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "SOMETHING WENT WRONG", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
     }
-//    create a function for datepicker
-    private fun showDatePicker(){
+
+    //    create a function for datepicker
+    private fun showDatePicker() {
         val datePicker = DatePickerDialog(this)
         datePicker.setOnDateSetListener { view, year, month, dayOfMonth ->
-            date = (year*10000 + month*100 + dayOfMonth).toLong()
+            date = (year * 10000 + month * 100 + dayOfMonth).toLong()
             val netDate = Date(date)
             formatedDate = sdf.format(netDate)
-            binding.dateTv.text = formatedDate
+            binding.dateTv.text = getString(R.string.date,formatedDate)
         }
         datePicker.show()
     }
