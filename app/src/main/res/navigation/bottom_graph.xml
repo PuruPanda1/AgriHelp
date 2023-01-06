@@ -13,14 +13,13 @@
     <fragment
         android:id="@+id/marketPlaceFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.MarketPlaceFragment"
-        android:label="Market Place"
+        android:label="Public Forum"
         tools:layout="@layout/fragment_market_place" />
     <fragment
         android:id="@+id/inventoryFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
         android:label="Inventory"
-        tools:layout="@layout/fragment_inventory" >
-    </fragment>
+        tools:layout="@layout/fragment_inventory"></fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.ProfileFragment"

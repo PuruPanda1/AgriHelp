@@ -10,4 +10,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textColor">#FFFFFFFF</color>
     <color name="backgroundColor">#FF000000</color>
+    <color name="mainScreenBlue">#4479E3</color>
+    <color name="mainScreenGreen">#7FDB97</color>
+    <color name="fbButtonColor">#60A7FF</color>
+    <color name="footerColor">#20242F</color>
+
 </resources>

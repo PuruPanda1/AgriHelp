@@ -1,5 +1,6 @@
 package com.purabmodi.agrihelp.ui.fragments
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -11,9 +12,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.purabmodi.agrihelp.R
+import com.purabmodi.agrihelp.data.models.Posts
 import com.purabmodi.agrihelp.data.models.Record
 import com.purabmodi.agrihelp.databinding.FragmentMarketPlaceBinding
+import com.purabmodi.agrihelp.ui.adapter.ForumAdapter
 import com.purabmodi.agrihelp.ui.adapter.LatestMarketDataPagingAdapter
 import com.purabmodi.agrihelp.ui.viewModel.MarketPlaceViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +32,6 @@ class MarketPlaceFragment : Fragment() {
     private var _binding: FragmentMarketPlaceBinding? = null
     private val binding get() = _binding!!
     private val vm by viewModels<MarketPlaceViewModel>()
-    private val map = HashMap<String, String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,67 +44,38 @@ class MarketPlaceFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setUpMenu()
-    }
-
-    private fun setUpMenu() {
-        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.toolbar_searchview_menu, menu)
-                val search = menu.findItem(R.id.menu_search)
-                val searchView = search.actionView as androidx.appcompat.widget.SearchView
-                searchView.isSubmitButtonEnabled = true
-                searchView.setOnQueryTextListener(object :
-                    androidx.appcompat.widget.SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        map["filters[commodity]"] = query ?: ""
-                        vm.getMarketPlaceData(map)
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        return false
-                    }
-
-                })
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                TODO("Not yet implemented")
-            }
-
-        })
-    }
-
-
     private fun initUI() {
-        val adapter = LatestMarketDataPagingAdapter(onClick = { item ->
-            onCLick(item)
-        })
-        binding.marketPlaceRC.layoutManager = LinearLayoutManager(requireContext())
-        binding.marketPlaceRC.adapter = adapter
-        map["filters[grade]"] = "FAQ"
-        vm.getMarketPlaceData(map)
-        vm.marketPlaceData.observe(viewLifecycleOwner) {
-            lifecycleScope.launch {
-                adapter.submitData(it)
-            }
-        }
-        lifecycleScope.launch {
-            adapter.loadStateFlow.collectLatest {
-                binding.marketPlaceRC.isVisible = it.refresh !is LoadState.Loading
-                if (it.source.refresh is LoadState.Error) {
-                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-        }
-    }
+        val adapter = ForumAdapter()
+        binding.forumRC.adapter = adapter
+        binding.forumRC.layoutManager = LinearLayoutManager(requireContext())
+        val arrayList = ArrayList<Posts>()
+        val db = Firebase.firestore
 
-    private fun onCLick(item: Record) {
-        Toast.makeText(requireContext(), "${item.commodity}", Toast.LENGTH_SHORT).show()
+        binding.forumRefresh.setOnRefreshListener {
+            Toast.makeText(requireContext(), "Refresh", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.forumRefresh.isRefreshing=false
+
+        db.collection("Posts")
+            .get()
+            .addOnSuccessListener {
+                for (document in it) {
+                    val record = Posts(
+                        document.data["comments"].toString().toLong(),
+                        document.data["date"].toString(),
+                        document.data["description"].toString(),
+                        document.data["hashtags"].toString(),
+                        document.data["id"].toString(),
+                        document.data["likes"].toString().toLong(),
+                        document.data["title"].toString(),
+                        document.data["username"].toString(),
+                        document.data["userId"].toString()
+                    )
+                    arrayList.add(record)
+                }
+                adapter.submitList(arrayList)
+            }
     }
 
     override fun onDestroy() {

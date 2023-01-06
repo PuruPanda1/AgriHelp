@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    tools:context=".ui.adminstration.LoginActivity">
+    tools:context=".ui.adminstration.SignUpActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +23,23 @@
             android:id="@+id/newProgressBar"
             android:layout_width="match_parent"
             android:layout_height="250dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Username"
+            app:endIconMode="clear_text"
+            app:placeholderText="abc@gmail.com">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -69,12 +86,12 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/white"
-            android:text="Log In"
+            android:text="Sign Up"
             android:textColor="@color/black"
             app:cornerRadius="5dp" />
 

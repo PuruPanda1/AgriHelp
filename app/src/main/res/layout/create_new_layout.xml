@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:id="@+id/addItemLayout"
         android:padding="25dp"
@@ -15,7 +16,7 @@
             android:layout_width="34dp"
             android:tint="@color/primary_green"
             android:src="@drawable/add_item_icon"
-            android:layout_height="34dp"/>
+            android:layout_height="34dp" />
 
         <TextView
             android:layout_marginStart="10dp"
@@ -25,7 +26,36 @@
 
             android:textSize="18sp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/footerColor" />
+
+    <LinearLayout
+        android:id="@+id/addPostLayout"
+        android:padding="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="34dp"
+            android:tint="@color/primary_green"
+            android:src="@drawable/add_item_icon"
+            android:layout_height="34dp" />
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:text="Create New Post"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
