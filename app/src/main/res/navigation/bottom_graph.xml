@@ -9,7 +9,11 @@
         android:id="@+id/agroTechFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.AgroTechFragment"
         android:label="Agro Tech"
-        tools:layout="@layout/fragment_agro_tech" />
+        tools:layout="@layout/fragment_agro_tech" >
+        <action
+            android:id="@+id/action_agroTechFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/marketPlaceFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.MarketPlaceFragment"
@@ -19,10 +23,22 @@
         android:id="@+id/inventoryFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
         android:label="Inventory"
-        tools:layout="@layout/fragment_inventory"></fragment>
+        tools:layout="@layout/fragment_inventory" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <argument
+            android:name="link"
+            app:argType="string" />
+        <argument
+            android:name="source"
+            app:argType="string" />
+    </fragment>
 </navigation>

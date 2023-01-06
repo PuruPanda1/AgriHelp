@@ -35,6 +35,9 @@ class NewsAdapter(
         ) {
             binding.newsTitle.text = item.title
             binding.newsSource.text = item.source.name
+            binding.root.setOnClickListener {
+                onClick(item)
+            }
 //            binding.newsPublishedAt.text = item.publishedAt
             Glide.with(binding.root.context)
                 .load(item.urlToImage)

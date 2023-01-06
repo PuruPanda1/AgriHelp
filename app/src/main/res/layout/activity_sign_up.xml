@@ -19,10 +19,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/newProgressBar"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_zw0djhar.json" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -32,7 +35,7 @@
             android:layout_marginBottom="10dp"
             android:hint="Username"
             app:endIconMode="clear_text"
-            app:placeholderText="abc@gmail.com">
+            app:placeholderText="hanivaghani">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/username"
@@ -73,17 +76,6 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/toSignUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="5dp"
-            android:padding="2dp"
-            android:text="Create new Account?"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
 
         <Button
             android:id="@+id/signInButton"

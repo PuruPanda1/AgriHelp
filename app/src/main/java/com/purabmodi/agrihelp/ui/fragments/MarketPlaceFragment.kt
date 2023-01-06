@@ -1,37 +1,26 @@
 package com.purabmodi.agrihelp.ui.fragments
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
-import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.data.models.Posts
-import com.purabmodi.agrihelp.data.models.Record
 import com.purabmodi.agrihelp.databinding.FragmentMarketPlaceBinding
 import com.purabmodi.agrihelp.ui.adapter.ForumAdapter
-import com.purabmodi.agrihelp.ui.adapter.LatestMarketDataPagingAdapter
-import com.purabmodi.agrihelp.ui.viewModel.MarketPlaceViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MarketPlaceFragment : Fragment() {
     private var _binding: FragmentMarketPlaceBinding? = null
     private val binding get() = _binding!!
-    private val vm by viewModels<MarketPlaceViewModel>()
+    private lateinit var adapter: ForumAdapter
+    private lateinit var db: FirebaseFirestore
+    private lateinit var posts: ArrayList<Posts>
+    private lateinit var loadingDialogFragment: LoadingDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,36 +34,39 @@ class MarketPlaceFragment : Fragment() {
     }
 
     private fun initUI() {
-        val adapter = ForumAdapter()
+        loadingDialogFragment = LoadingDialogFragment()
+        loadingDialogFragment.show(childFragmentManager, "Loading Dialog")
+        adapter = ForumAdapter()
         binding.forumRC.adapter = adapter
         binding.forumRC.layoutManager = LinearLayoutManager(requireContext())
-        val arrayList = ArrayList<Posts>()
-        val db = Firebase.firestore
+        posts = ArrayList()
+        db = Firebase.firestore
+
+        getPosts()
 
         binding.forumRefresh.setOnRefreshListener {
-            Toast.makeText(requireContext(), "Refresh", Toast.LENGTH_SHORT).show()
+            loadingDialogFragment.show(childFragmentManager, "Loading Dialog")
+            getPosts()
         }
 
-        binding.forumRefresh.isRefreshing=false
+    }
 
+    private fun getPosts() {
         db.collection("Posts")
+            .orderBy("date")
             .get()
             .addOnSuccessListener {
                 for (document in it) {
-                    val record = Posts(
-                        document.data["comments"].toString().toLong(),
-                        document.data["date"].toString(),
-                        document.data["description"].toString(),
-                        document.data["hashtags"].toString(),
-                        document.data["id"].toString(),
-                        document.data["likes"].toString().toLong(),
-                        document.data["title"].toString(),
-                        document.data["username"].toString(),
-                        document.data["userId"].toString()
-                    )
-                    arrayList.add(record)
+                    val post = document.toObject(Posts::class.java)
+                    posts.add(post)
                 }
-                adapter.submitList(arrayList)
+                adapter.submitList(posts)
+                loadingDialogFragment.dismiss()
+                binding.forumRefresh.isRefreshing = false
+            }
+            .addOnFailureListener {
+                binding.forumRefresh.isRefreshing = false
+                Toast.makeText(requireContext(), "Error: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 

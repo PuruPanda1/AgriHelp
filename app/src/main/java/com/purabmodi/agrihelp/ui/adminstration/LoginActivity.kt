@@ -33,6 +33,12 @@ class LoginActivity : AppCompatActivity() {
     private fun initUI() {
         actionBar?.hide()
         progressDialog = LoadingDialogFragment()
+
+        binding.toSignUp.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
+        }
+
         binding.login.setOnClickListener {
             login()
         }
@@ -71,9 +77,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun getUserName(userId: String) {
         val mDatabase = FirebaseDatabase.getInstance().reference
-        mDatabase.child("users").child(userId).get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")
-        }.addOnFailureListener{
+        mDatabase.child("Users").child(userId).get().addOnSuccessListener {
+            SharedPref(this).setUserName(it.child("username").value.toString())
+            Log.d("USERNAMECHECK", "getUserName: ${it.child("username").value.toString()}")
+        }.addOnFailureListener {
             Log.e("firebase", "Error getting data", it)
         }
     }

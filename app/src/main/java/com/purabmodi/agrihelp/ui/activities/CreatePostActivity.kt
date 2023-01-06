@@ -35,7 +35,7 @@ class CreatePostActivity : AppCompatActivity() {
 
     private fun savePost() {
 
-        var userName = SharedPref(this).getUserName()
+        val userName = SharedPref(this).getUserName()
         val db = Firebase.firestore
         val id: String = UUID.randomUUID().toString()
         val currentUserId = FirebaseAuth.getInstance().currentUser!!.uid

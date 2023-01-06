@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
-    android:layout_marginTop="5dp"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="@color/backgroundColor"
     app:cardElevation="1dp">
 
     <LinearLayout
+        android:id="@+id/postLinearLayout"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -50,7 +50,7 @@
             android:fontFamily="@font/poppins"
             android:padding="2dp"
             android:text="Covid 19 hits the world again"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
 
             android:padding="2dp"
             android:text="I am a short description of 2 lines, hehe funny!"
-            android:textColor="@color/black"
+            android:textColor="@color/textColor"
             android:textSize="12sp" />
 
         <LinearLayout
@@ -76,8 +76,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/ic_search"
+                android:drawableStart="@drawable/ic_like"
                 android:drawablePadding="5dp"
+                android:drawableTint="@color/textColor"
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="0"
@@ -89,8 +90,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/ic_search"
+                android:drawableStart="@drawable/ic_comment"
                 android:drawablePadding="5dp"
+                android:drawableTint="@color/textColor"
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="0"
@@ -110,4 +112,9 @@
         </LinearLayout>
 
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <View
+        app:layout_constraintTop_toBottomOf="@id/postLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/footerColor" />
+</androidx.constraintlayout.widget.ConstraintLayout>

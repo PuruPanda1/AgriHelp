@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(binding.bottomNavigationView.menu)
-        setupActionBarWithNavController(navController,appBarConfiguration)
+//        val appBarConfiguration = AppBarConfiguration(binding.bottomNavigationView.menu)
+//        setupActionBarWithNavController(navController,appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->

@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.purabmodi.agrihelp.data.models.Article
 import com.purabmodi.agrihelp.databinding.FragmentAgroTechBinding
 import com.purabmodi.agrihelp.ui.adapter.NewsAdapter
 import com.purabmodi.agrihelp.ui.viewModel.NewsViewModel
@@ -36,8 +38,8 @@ class AgroTechFragment : Fragment() {
 
     private fun subscribeToObservers() {
         val newsAdapter = NewsAdapter(
-            onClick = {
-                Toast.makeText(requireContext(), it.title, Toast.LENGTH_SHORT).show()
+            onClick = {article->
+                openWebView(article)
             }
         )
         binding.newsRCV.adapter = newsAdapter
@@ -57,6 +59,11 @@ class AgroTechFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun openWebView(article: Article) {
+        val action = AgroTechFragmentDirections.actionAgroTechFragmentToWebViewFragment(article.url,article.source.name)
+        binding.root.findNavController().navigate(action)
     }
 
     private fun initUI() {
