@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CropDex</string>
+    <string name="app_desc">क्रॉपडेक्स एक एंड्रॉइड एप्लिकेशन है जो किसानों को एक दूसरे से जुड़े रहने और तकनीक के साथ सीखने और बढ़ने में मदद करता है।</string>
+    <string name="date">दिनांक %s</string>
+    <string name="create_account">नया खाता बनाएँ</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="password">कूटशब्द</string>
+    <string name="create_new_post">नई पोस्ट बनाएं</string>
+    <string name="add_inventory_item">इन्वेंट्री आइटम जोड़ें</string>
+    <string name="loading">लोड हो रहा है</string>
+    <string name="profile">प्रोफ़ाइल</string>
+    <string name="inventory">सूची</string>
+    <string name="create">सृजन करना</string>
+    <string name="forum">मंच</string>
+    <string name="agrotech">कृषि प्रौद्योगिकी</string>
+    <string name="sign_in">साइन इन करें</string>
+    <string name="register">रजिस्टर करें</string>
+    <string name="sign_up">साइन इन करें</string>
+    <string name="username">વપરાશકર્તા નામ</string>
+    <string name="email">ઇમેઇલ</string>
+    <string name="languageName">हिंदी</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="edit">संपादन करना</string>
+    <string name="not_given">नहीं दिया</string>
+    <string name="mobile_number">संपर्क संख्या</string>
+    <string name="name">नाम</string>
+    <string name="change_language">भाषा बदलें</string>
+</resources>

@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:hint="Username"
+            android:hint="@string/username"
             app:endIconMode="clear_text"
             app:placeholderText="hanivaghani">
 
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:hint="Email"
+            android:hint="@string/email"
             app:endIconMode="clear_text"
             app:placeholderText="abc@gmail.com">
 
@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/white"
-            android:text="Sign Up"
+            android:text="@string/sign_up"
             android:textColor="@color/black"
             app:cornerRadius="5dp" />
 
@@ -97,11 +97,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginEnd="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:drawableLeft="@drawable/googleg_disabled_color_18"
-                android:text="Google"
+                android:text="@string/google"
                 android:textColor="@color/white"
                 app:cornerRadius="5dp" />
 
@@ -113,7 +113,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/mainScreenBlue"
-                android:text="Facebook"
+                android:text="@string/facebook"
+                android:textColor="@color/white"
                 app:cornerRadius="5dp" />
         </LinearLayout>
 

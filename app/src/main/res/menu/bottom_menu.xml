@@ -3,30 +3,30 @@
 <item
     android:id="@+id/agroTechFragment"
     android:icon="@drawable/agrotech_icon"
-    android:title="AgroTech"
+    android:title="@string/agrotech"
     />
 
     <item
     android:id="@+id/marketPlaceFragment"
     android:icon="@drawable/marketplace_icon"
-    android:title="Forum"
+    android:title="@string/forum"
     />
 
     <item
     android:id="@+id/createNew"
     android:icon="@drawable/create_icon"
-    android:title="Create"
+    android:title="@string/create"
     />
 
     <item
     android:id="@+id/inventoryFragment"
     android:icon="@drawable/inventory_icon"
-    android:title="Inventory"
+    android:title="@string/inventory"
     />
 
     <item
     android:id="@+id/profileFragment"
     android:icon="@drawable/profile_icon"
-    android:title="Profile"
+    android:title="@string/profile"
     />
 </menu>

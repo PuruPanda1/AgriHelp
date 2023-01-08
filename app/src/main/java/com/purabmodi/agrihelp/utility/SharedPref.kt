@@ -27,4 +27,14 @@ class SharedPref(context: Context) {
         return sharedPreferences.getString("username", "Unkown User")!!
     }
 
+    fun setLanguage(language: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("language", language)
+        editor.apply()
+    }
+
+    fun getLanguage(): String {
+        return sharedPreferences.getString("language", "en")!!
+    }
+
 }

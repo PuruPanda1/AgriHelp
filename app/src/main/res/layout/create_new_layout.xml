@@ -7,26 +7,26 @@
 
     <LinearLayout
         android:id="@+id/addItemLayout"
-        android:padding="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="25dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="34dp"
-            android:tint="@color/primary_green"
-            android:src="@drawable/add_item_icon"
-            android:layout_height="34dp" />
+            android:layout_height="34dp"
+            android:src="@drawable/ic_add_item"
+            android:tint="@color/primary_green" />
 
         <TextView
-            android:layout_marginStart="10dp"
-            android:text="Add Inventory Item"
-            android:gravity="center"
-            android:textStyle="bold"
-
-            android:textSize="18sp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+
+            android:text="@string/add_inventory_item"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -37,25 +37,25 @@
 
     <LinearLayout
         android:id="@+id/addPostLayout"
-        android:padding="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="25dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="34dp"
-            android:tint="@color/primary_green"
-            android:src="@drawable/add_item_icon"
-            android:layout_height="34dp" />
+            android:layout_height="34dp"
+            android:src="@drawable/ic_create_post"
+            android:tint="@color/primary_green" />
 
         <TextView
-            android:layout_marginStart="10dp"
-            android:text="Create New Post"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:text="@string/create_new_post"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Loading..."
+            android:text="@string/loading"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
