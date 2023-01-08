@@ -2,25 +2,22 @@ package com.purabmodi.agrihelp.ui.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Timestamp
-import com.purabmodi.agrihelp.data.models.Posts
-import com.purabmodi.agrihelp.databinding.ForumRowLayoutBinding
+import com.purabmodi.agrihelp.data.models.Comment
+import com.purabmodi.agrihelp.databinding.CommentRowLayoutBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ForumAdapter(
-    private val onComment: (Posts) -> Unit,
-) : ListAdapter<Posts, ForumAdapter.ViewHolder>(COMPARATOR) {
+class CommentAdapter(
+    private val onComment: (Comment) -> Unit
+) : ListAdapter<Comment, CommentAdapter.ViewHolder>(COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ForumRowLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            CommentRowLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -30,20 +27,14 @@ class ForumAdapter(
     }
 
 
-    class ViewHolder(val binding: ForumRowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Posts, onComment: (Posts) -> Unit) {
+    class ViewHolder(val binding: CommentRowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Comment, onComment: (Comment) -> Unit) {
             Log.d("CheckingItemDetails", "bind: ${item.date}")
             Log.d("CheckingItemDetails", "bind: ${item.date?.toDate()}")
 
-            binding.blogTitleRV.text = item.title
-            binding.blogDescriptionRV.text = item.description
-            binding.blogHashTags.text = item.hashtags
-//            binding.dateTimeBlogRV.text = item.date
-            binding.blogUserNameRV.text = item.username
-
-            binding.blogCommentCountRV.setOnClickListener {
-                onComment(item)
-            }
+            binding.commentTextContent.text = item.comment
+            binding.commentUserName.text = item.username
+//            binding.commentPublishTime.text = item.date.toString()
 
         }
 
@@ -62,12 +53,12 @@ class ForumAdapter(
 
 
     companion object {
-        private val COMPARATOR = object : DiffUtil.ItemCallback<Posts>() {
-            override fun areItemsTheSame(oldItem: Posts, newItem: Posts): Boolean {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<Comment>() {
+            override fun areItemsTheSame(oldItem: Comment, newItem: Comment): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Posts, newItem: Posts): Boolean {
+            override fun areContentsTheSame(oldItem: Comment, newItem: Comment): Boolean {
                 return oldItem == newItem
             }
 

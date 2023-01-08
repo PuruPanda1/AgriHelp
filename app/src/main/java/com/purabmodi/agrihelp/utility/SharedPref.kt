@@ -24,7 +24,7 @@ class SharedPref(context: Context) {
     }
 
     fun getUserName(): String {
-        return sharedPreferences.getString("userName", "Unkown User")!!
+        return sharedPreferences.getString("username", "Unkown User")!!
     }
 
 }

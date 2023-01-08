@@ -2,6 +2,7 @@ package com.purabmodi.agrihelp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -31,24 +32,31 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(navController)
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            if(item.itemId == R.id.createNew){
+            if (item.itemId == R.id.createNew) {
                 val bottomSheet = CreateNewBottomSheet()
-                bottomSheet.show(supportFragmentManager,bottomSheet.tag)
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
                 false
-            }else{
+            } else {
                 NavigationUI.onNavDestinationSelected(item, navController)
                 true
             }
         }
 
         binding.bottomNavigationView.setOnItemReselectedListener { item ->
-            if(item.itemId == R.id.createNew){
+            if (item.itemId == R.id.createNew) {
                 val bottomSheet = CreateNewBottomSheet()
-                bottomSheet.show(supportFragmentManager,bottomSheet.tag)
-            }
-            else{
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            } else {
                 val reselectedDestinationId = item.itemId
                 navController.popBackStack(reselectedDestinationId, inclusive = false)
+            }
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.webViewFragment || destination.id == R.id.commentFragment) {
+                binding.bottomNavigationView.visibility = View.GONE
+            } else {
+                binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }
 

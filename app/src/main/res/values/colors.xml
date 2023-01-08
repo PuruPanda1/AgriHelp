@@ -14,4 +14,5 @@
     <color name="mainScreenGreen">#7FDB97</color>
     <color name="fbButtonColor">#60A7FF</color>
     <color name="footerColor">#F1F2F6</color>
+    <color name="secondary_color1">#8E8E8E</color>
 </resources>

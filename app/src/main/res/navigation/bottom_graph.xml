@@ -18,7 +18,11 @@
         android:id="@+id/marketPlaceFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.MarketPlaceFragment"
         android:label="Public Forum"
-        tools:layout="@layout/fragment_market_place" />
+        tools:layout="@layout/fragment_market_place" >
+        <action
+            android:id="@+id/action_marketPlaceFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/inventoryFragment"
         android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
@@ -39,6 +43,21 @@
             app:argType="string" />
         <argument
             android:name="source"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+        <argument
+            android:name="postId"
+            app:argType="string" />
+        <argument
+            android:name="userId"
             app:argType="string" />
     </fragment>
 </navigation>

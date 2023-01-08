@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/blog_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:background="@color/backgroundColor"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/comment_user_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:backgroundTint="@color/secondary_color1"
+            android:padding="5dp"
+            android:src="@drawable/ic_account"
+            android:tint="@color/textColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/core_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/comment_user_profile"
+            app:layout_constraintTop_toTopOf="@+id/comment_user_profile">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/comment_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:letterSpacing="0.01"
+                    android:text="Unkown User"
+                    android:textColor="@color/textColor"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/verified_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="2dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/comment_user_name"
+                    app:layout_constraintStart_toEndOf="@+id/comment_user_name"
+                    app:layout_constraintTop_toTopOf="@+id/comment_user_name" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/comment_publish_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/poppins"
+                android:text="2 hours ago"
+                android:textColor="@color/secondary_color1"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/comment_text_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/poppins"
+                android:paddingEnd="4dp"
+                android:text="hey, this is a comment"
+                android:textColor="@color/textColor"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/footerColor"
+        app:layout_constraintTop_toBottomOf="@id/blog_comment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
