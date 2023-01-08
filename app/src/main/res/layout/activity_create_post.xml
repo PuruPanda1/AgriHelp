@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="2dp"
-            android:hint="Title"
+            android:hint="@string/title"
             app:counterEnabled="true"
             app:counterMaxLength="100"
             app:endIconMode="clear_text"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:hint="Description"
+            android:hint="@string/description"
             app:counterEnabled="true"
             app:endIconMode="clear_text"
             app:errorEnabled="true"
@@ -72,7 +72,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:hint="Hashtags"
+            android:hint="@string/hashtags"
             app:endIconMode="clear_text"
             app:placeholderText="#health #covid19 #cancer">
 
@@ -90,7 +90,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:padding="10dp"
-            android:text="Submit" />
+            android:text="@string/submit" />
 
         <TextView
             android:id="@+id/goBackButton"
@@ -100,7 +100,7 @@
             android:fontFamily="@font/poppins"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Go back to the posts"
+            android:text="@string/go_back"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>

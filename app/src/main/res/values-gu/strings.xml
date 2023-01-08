@@ -27,4 +27,11 @@
     <string name="edit">ફેરફાર કરો</string>
     <string name="logout">લૉગ આઉટ</string>
     <string name="quality">ગુણવત્તા: %s</string>
+    <string name="title">શીર્ષક</string>
+    <string name="description">વર્ણન</string>
+    <string name="submit">સબમિટ કરો</string>
+    <string name="go_back">પાછા જાવ</string>
+    <string name="hashtags">હેશટેગ્સ</string>
+    <string name="comment">ટિપ્પણીઓ</string>
+    <string name="write_a_comment">એક ટિપ્પણી લખો ...</string>
 </resources>

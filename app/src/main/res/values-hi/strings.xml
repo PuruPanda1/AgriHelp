@@ -27,4 +27,11 @@
     <string name="name">नाम</string>
     <string name="change_language">भाषा बदलें</string>
     <string name="quality">गुणवत्ता: %s</string>
+    <string name="title">शीर्षक</string>
+    <string name="description">विवरण</string>
+    <string name="submit">प्रस्तुत</string>
+    <string name="go_back">वापस जाओ</string>
+    <string name="hashtags">हैशटैग</string>
+    <string name="comment">टिप्पणियाँ</string>
+    <string name="write_a_comment">टिप्पणी लिखें ...</string>
 </resources>

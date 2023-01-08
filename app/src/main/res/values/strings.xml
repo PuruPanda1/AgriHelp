@@ -30,4 +30,11 @@
     <string name="name">Name</string>
     <string name="change_language">Change Language</string>
     <string name="quality">Quality: %s</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="submit">Submit</string>
+    <string name="go_back">Go back</string>
+    <string name="hashtags">Hashtags</string>
+    <string name="comment">Comments</string>
+    <string name="write_a_comment">Write a comment...</string>
 </resources>

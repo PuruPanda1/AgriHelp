@@ -11,7 +11,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.purabmodi.agrihelp.databinding.ActivityMainBinding
 import com.purabmodi.agrihelp.ui.bottomSheet.CreateNewBottomSheet
+import com.purabmodi.agrihelp.utility.SharedPref
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setLocale()
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
@@ -60,6 +64,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setLocale() {
+        val sharedPref = SharedPref(this)
+        val lang = sharedPref.getLanguage()
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     override fun onSupportNavigateUp(): Boolean {

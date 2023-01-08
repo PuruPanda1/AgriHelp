@@ -20,10 +20,10 @@ class CreateNewBottomSheet : BottomSheetDialogFragment() {
     ): View {
         _binding = CreateNewLayoutBinding.inflate(layoutInflater, container, false)
 
-        binding.addItemLayout.setOnClickListener {
-            requireActivity().startActivity(Intent(requireActivity(), AddUpdateItem::class.java))
-            dismiss()
-        }
+//        binding.addItemLayout.setOnClickListener {
+//            requireActivity().startActivity(Intent(requireActivity(), AddUpdateItem::class.java))
+//            dismiss()
+//        }
 
         binding.addPostLayout.setOnClickListener {
             requireActivity().startActivity(
