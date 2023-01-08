@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import com.purabmodi.agrihelp.data.models.Comment
 import com.purabmodi.agrihelp.databinding.CommentRowLayoutBinding
+import com.purabmodi.agrihelp.utility.TimeAgo
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,21 +36,15 @@ class CommentAdapter(
 
             binding.commentTextContent.text = item.comment
             binding.commentUserName.text = item.username
-//            binding.commentPublishTime.text = item.date.toString()
 
+            convertTime(item.date!!)
         }
 
-        fun dateFormat(date: String): String {
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-            val dateTime = simpleDateFormat.parse(date)
-            val now = Calendar.getInstance().timeInMillis
-            val result = android.text.format.DateUtils.getRelativeTimeSpanString(
-                dateTime.time,
-                now,
-                android.text.format.DateUtils.MINUTE_IN_MILLIS
-            )
-            return result.toString()
+        private fun convertTime(date: Timestamp) {
+            val dateString = TimeAgo.getTimeAgo((date.seconds * 1000))
+            binding.commentPublishTime.text = dateString
         }
+
     }
 
 

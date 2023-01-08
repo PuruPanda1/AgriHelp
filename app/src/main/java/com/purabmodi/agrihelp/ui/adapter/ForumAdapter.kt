@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Timestamp
 import com.purabmodi.agrihelp.data.models.Posts
 import com.purabmodi.agrihelp.databinding.ForumRowLayoutBinding
+import com.purabmodi.agrihelp.utility.TimeAgo
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -38,13 +39,19 @@ class ForumAdapter(
             binding.blogTitleRV.text = item.title
             binding.blogDescriptionRV.text = item.description
             binding.blogHashTags.text = item.hashtags
-//            binding.dateTimeBlogRV.text = item.date
             binding.blogUserNameRV.text = item.username
+
+            convertTime(item.date!!)
 
             binding.blogCommentCountRV.setOnClickListener {
                 onComment(item)
             }
 
+        }
+
+        private fun convertTime(date: Timestamp) {
+            val dateString = TimeAgo.getTimeAgo((date.seconds * 1000))
+            binding.dateTimeBlogRV.text = dateString
         }
 
         fun dateFormat(date: String): String {

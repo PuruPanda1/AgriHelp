@@ -75,7 +75,7 @@
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/poppins"
                 android:text="2 hours ago"
-                android:textColor="@color/secondary_color1"
+                android:textColor="#616161"
                 android:textSize="12sp" />
 
 
