@@ -8,7 +8,7 @@
 
     <item
     android:id="@+id/marketPlaceFragment"
-    android:icon="@drawable/marketplace_icon"
+    android:icon="@drawable/ic_forum"
     android:title="@string/forum"
     />
 
@@ -20,7 +20,7 @@
 
     <item
     android:id="@+id/inventoryFragment"
-    android:icon="@drawable/inventory_icon"
+    android:icon="@drawable/marketplace_icon"
     android:title="@string/inventory"
     />
 

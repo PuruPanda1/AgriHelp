@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.purabmodi.agrihelp.R
 import com.purabmodi.agrihelp.data.models.Record
 import com.purabmodi.agrihelp.databinding.MarketplaceRowItemLayoutBinding
 
@@ -34,7 +35,10 @@ class LatestMarketDataPagingAdapter(
         fun bind(item: Record, onClick: (item: Record) -> Unit) {
             binding.itemName.text = item.commodity
             binding.itemPrice.text = "₹ ${item.modal_price}"
+            binding.itemQuality.text =
+                binding.itemName.context.getString(R.string.quality, item.grade)
             val text = "${item.district}, ${item.state}"
+            binding.itemState.text = text
         }
     }
 
