@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AgriHelp"
         tools:targetApi="31">
         <activity
-            android:name="com.purabmodi.agrihelp.ui.activities.CreatePostActivity"
+            android:name="com.system.agrihelp.ui.activities.CreatePostActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
