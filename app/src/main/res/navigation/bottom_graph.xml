@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/agroTechFragment"
-        android:name="com.system.agrihelp.ui.fragments.AgroTechFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.AgroTechFragment"
         android:label="Agro Tech"
         tools:layout="@layout/fragment_agro_tech" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/marketPlaceFragment"
-        android:name="com.system.agrihelp.ui.fragments.MarketPlaceFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.MarketPlaceFragment"
         android:label="Public Forum"
         tools:layout="@layout/fragment_market_place" >
         <action
@@ -25,17 +25,17 @@
     </fragment>
     <fragment
         android:id="@+id/inventoryFragment"
-        android:name="com.system.agrihelp.ui.fragments.InventoryFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.InventoryFragment"
         android:label="Mandi Prices"
         tools:layout="@layout/fragment_inventory" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.system.agrihelp.ui.fragments.ProfileFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.system.agrihelp.ui.fragments.WebViewFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" >
         <argument
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
-        android:name="com.system.agrihelp.ui.fragments.CommentFragment"
+        android:name="com.purabmodi.agrihelp.ui.fragments.CommentFragment"
         android:label="fragment_comment"
         tools:layout="@layout/fragment_comment" >
         <argument
